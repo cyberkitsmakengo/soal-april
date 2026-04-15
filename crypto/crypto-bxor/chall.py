@@ -9,7 +9,7 @@ def rotl(byte_val, shift):
     return ((byte_val << shift) | (byte_val >> (8 - shift))) & 0xFF
 
 
-plaintext = "CTF{まんたっぷじわ}"
+plaintext = "CTF{redacted}"
 pt_bytes = plaintext.encode("utf-8")
 
 if len(pt_bytes) % 2 != 0:
@@ -22,13 +22,17 @@ r = pt_bytes[mid:]
 l_rot = bytes([rotr(b, 6) for b in l])
 r_rot = bytes([rotl(b, 5) for b in r])
 
+
 # key
 k1 = ord(os.urandom(1))
 k2 = ord(os.urandom(1))
 k3 = ord(os.urandom(1))
 
+l_new = r_rot
 r_final = bytes([l ^ r for l, r in zip(l_rot, r_rot)])
-l_final = bytes([b ^ k1 ^ k2 ^ k3 for b in l_rot])
+l_final = bytes([b ^ k1 ^ k2 ^ k3 for b in l_new])
 
 ciphertext = l_final + r_final
 print(f"chiphertext : {ciphertext.hex()}")
+
+# chiphertext : 97db9f97db1d97dbf897bb1a4471616d91bff086bf1932dff7d1
