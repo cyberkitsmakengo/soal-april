@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS Treasure</title>
+</head>
+<body>
+    <h2>Find the hidden flag!</h2>
+    <input type="text" id="flagInput" placeholder="Enter flag">
+    <button onclick="checkFlag()">Submit</button>
+
+    <p id="result"></p>
+
+    <script>
+        function scramble(input) {
+            let key = 5;
+            let result = "";
+
+            for (let i = 0; i < input.length; i++) {
+                result += String.fromCharCode(input.charCodeAt(i) + key);
+            }
+
+            return result;
+        }
+
+        function checkFlag() {
+            let userInput = document.getElementById("flagInput").value;
+
+            let encodedTarget = "H~gjwpunyx~x}lO{g0l0g5";
+
+            if (scramble(userInput) === encodedTarget) {
+                document.getElementById("result").innerText = "Correct!";
+            } else {
+                document.getElementById("result").innerText = "Wrong!";
+            }
+        }
+    </script>
+</body>
+</html>
