@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Challenge</title>
+    <link rel="stylesheet" href="/public/style.css" />
+  </head>
+  <body>
+    <div class="bg-glow"></div>
+    <main class="container">
+      <section class="card">
+        <h1>About This Challenge</h1>
+        <p>
+          Challenge ini bersifat <strong>CVE-inspired</strong> dan meniru pola kerentanan nyata:
+          <strong>operator injection</strong> pada query Mongo-like akibat sanitasi yang tidak lengkap.
+        </p>
+
+        <ul class="list">
+          <li>Filter memblokir karakter dan operator tertentu secara <em>shallow</em>.</li>
+          <li>Aplikasi melakukan normalisasi key unicode sebelum query dijalankan.</li>
+          <li>Kombinasi dua hal ini bisa membuka bypass autentikasi admin.</li>
+        </ul>
+
+        <p class="muted">
+          Tujuan challenge: pahami kenapa blacklist + normalisasi yang salah urutan bisa berujung NoSQL injection.
+        </p>
+
+        <a href="/" class="btn primary">Back</a>
+      </section>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/public/style.css" />
+  </head>
+  <body>
+    <div class="bg-glow"></div>
+    <main class="container">
+      <section class="card">
+        <h1>Dashboard</h1>
+        <p>Halo, <strong><%= user.username %></strong> (<%= user.role %>)</p>
+
+        <% if (flag) { %>
+          <div class="flag-box">
+            <p>🎉 Admin authenticated. Berikut flag kamu:</p>
+            <code><%= flag %></code>
+          </div>
+        <% } else { %>
+          <p class="muted">Kamu bukan admin, flag tidak tersedia.</p>
+        <% } %>
+
+        <div class="row">
+          <a href="/" class="btn ghost">Back Home</a>
+          <form action="/logout" method="post">
+            <button type="submit" class="btn danger">Logout</button>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

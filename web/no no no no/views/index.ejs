@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NoSQLi Lab</title>
+    <link rel="stylesheet" href="/public/style.css" />
+  </head>
+  <body>
+    <div class="bg-glow"></div>
+    <main class="container">
+      <header class="hero">
+        <p class="badge"><%= challengeInfo.subtitle %></p>
+        <h1><%= challengeInfo.title %></h1>
+        <p>
+          Mini lab autentikasi admin dengan filter payload yang "lumayan ketat". Target kamu:
+          login sebagai admin lalu ambil flag di dashboard.
+        </p>
+        <div class="hero-actions">
+          <a href="/about" class="btn ghost">Challenge Info</a>
+          <% if (user) { %>
+            <a href="/dashboard" class="btn primary">Go Dashboard</a>
+          <% } %>
+        </div>
+      </header>
+
+      <section class="card">
+        <h2>API Login Console</h2>
+        <p class="muted">POST <code>/api/login</code> dengan body JSON.</p>
+
+        <label for="payload">Request Body</label>
+        <textarea id="payload" spellcheck="false">{
+  "username": "admin",
+  "password": "admin"
+}</textarea>
+
+        <div class="row">
+          <button id="sendBtn" class="btn primary">Send Payload</button>
+          <button id="resetBtn" class="btn ghost">Reset</button>
+          <% if (user) { %>
+          <form action="/logout" method="post">
+            <button type="submit" class="btn danger">Logout</button>
+          </form>
+          <% } %>
+        </div>
+
+        <div class="output-wrap">
+          <h3>Response</h3>
+          <pre id="output">Belum ada request.</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="/public/main.js"></script>
+  </body>
+</html>

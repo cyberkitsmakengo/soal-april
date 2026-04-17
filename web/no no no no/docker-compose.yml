@@ -1,0 +1,11 @@
+services:
+  nosqli-cve-lab:
+    build: .
+    container_name: nosqli-cve-lab
+    ports:
+      - "8080:3000"
+    environment:
+      - FLAG=Cyberkits{sixxxsevennn_G00D_J0B}
+      - SESSION_SECRET=change_this_for_production
+      - ADMIN_PASSWORD=SuperSecret_Admin_Only
+    restart: unless-stopped
